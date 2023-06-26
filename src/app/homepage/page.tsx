@@ -44,7 +44,12 @@ const Page = (props: Props) => {
     var time = today.getTime();
     console.log(time);
     setTime(time);
-    saveData(user, { randomData }, time);
+    if (user !== null) {
+      saveData(user, { randomData }, time);
+    } else {
+      // Handle the case when user is null
+      console.log("User is null. Cannot save data.");
+    }
     setRandomData("");
   };
   useEffect(() => {
@@ -57,7 +62,7 @@ const Page = (props: Props) => {
       }
     };
     getAllRandomData();
-  }, [uploadData]);
+  }, [getData, user]);
 
   return (
     <div className="flex justify-center items-center flex-col max-w-[1140px] mx-auto">
