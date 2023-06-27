@@ -21,7 +21,7 @@ const Page = (props: Props) => {
   const getRandomData = async () => {
     try {
       setLoading(true);
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_URL}/api/`);
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_URL}/api`);
       const data = response.data;
       console.log(data.content);
       setRandomData(data.content);
@@ -33,9 +33,7 @@ const Page = (props: Props) => {
   };
 
   const logOut = () => {
-    console.log(auth);
     signOut(auth);
-    router.push("/");
     router.push("/");
   };
 
